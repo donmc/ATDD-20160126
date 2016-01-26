@@ -5,7 +5,7 @@ public class TddAirApplication {
 	
 	private FlightDao flights = new FlightDao();
 	
-	public TddAirApplication() {
+	public TddAirApplication() { 
 	}
 	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
