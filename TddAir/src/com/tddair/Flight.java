@@ -9,6 +9,8 @@ public class Flight {
 	private int number;
 	private int mileage;
 
+	
+	
 	public Flight(String origin, String destination, int mileage, String airline, int number) {
 		if(origin == null || origin.length() != 3) {
 			throw new IllegalArgumentException("Invalid origin code");
@@ -46,5 +48,11 @@ public class Flight {
 	public int getMileage() {
 		return mileage;
 	}
+
+	public String getFlightInfo() {
+		String flightInfo = this.getFullFlightNumber() + " | " + this.getOrigin() + " -> " + this.getDestination() + " | " + this.getMileage() + " miles";
+		return flightInfo;
+	}
+
 	
 }
