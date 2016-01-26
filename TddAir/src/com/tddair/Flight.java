@@ -3,6 +3,7 @@ package com.tddair;
 
 public class Flight {
 	
+	private static final String DELIMITER = " | ";
 	private String origin;
 	private String destination;
 	private String airline;
@@ -45,6 +46,16 @@ public class Flight {
 	}
 	public int getMileage() {
 		return mileage;
+	}
+
+	public String toInfo() {
+		// TODO Auto-generated method stub
+		String flightInfo = null;
+		flightInfo = getFullFlightNumber() + DELIMITER + 
+					 getOrigin() + " -> " + 
+					 getDestination() + DELIMITER + 
+					 getMileage() + " miles";
+		return flightInfo;
 	}
 	
 }
