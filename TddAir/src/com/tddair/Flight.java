@@ -47,4 +47,11 @@ public class Flight {
 		return mileage;
 	}
 	
+	@Override
+	public String toString() {
+		String info = getFullFlightNumber() + " | " + getOrigin() + " -> " + getDestination() +
+				" | " + getMileage() + " miles";
+		
+		return info;
+	}
 }
