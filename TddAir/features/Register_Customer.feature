@@ -4,18 +4,14 @@ Feature: Register Customer
   So that I can start gaining miles for rewards
 
   Scenario: Happy Path
-    When 
-    Then 
-    And 
-
+    When a customer registers with "don" and "don@improving.com"
+    Then that customer is added as a member
+    And that member has "Red" status
+    And that member has 0 ytd miles
+    And that member has 10000 balance miles
+    
   Scenario: Duplicate Username
-    Given
-    When
-    Then
-
-
-  Scenario: Invalid Email
-    Given
-    When
-    Then
+    Given a customer registers with "don" and "don@improving.com"
+    When a customer registers with "don" and "don.mcgreal@improving.com"
+    Then an error message "Duplicate Username!" is displayed
 
