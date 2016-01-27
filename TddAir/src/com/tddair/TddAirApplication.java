@@ -16,10 +16,6 @@ public class TddAirApplication {
 	public void registerCustomer(String username, String emailAddress) {
 		Member member = new Member(username, emailAddress);
 		
-		member.setStatus(Status.RED);
-		member.setYearToDateMiles(0);
-		member.addBalanceMiles(10000);
-		
 		members.addMember(member);
 	}
 

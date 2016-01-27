@@ -12,6 +12,9 @@ public class Member {
 	{
 		this.username = username;
 		this.emailAddress = emailAddress;
+		this.status = Status.RED;
+		this.yearToDateMiles = 0;
+		this.balanceMiles = 10000;
 	}
 	
 	public String getUsername() {
@@ -21,30 +24,13 @@ public class Member {
 	public Status getStatus() {
 		return status;
 	}
-	
-	public void setStatus(Status status) {
-		this.status = status;
-	}
 
 	public int getYearToDateMiles() {
 		return yearToDateMiles;
 	}
-	
-	public void setYearToDateMiles(int yearToDateMiles) {
-		this.yearToDateMiles = yearToDateMiles;
-	}
 
 	public int getBalanceMiles() {
 		return balanceMiles;
-	}
-	
-	/**
-	 * Add miles to the member's miles balance.
-	 * 
-	 * @param additionalMiles
-	 */
-	public void addBalanceMiles(int additionalMiles) {
-		balanceMiles = balanceMiles + additionalMiles;
 	}
 
 	public String getEmailAddress() {
