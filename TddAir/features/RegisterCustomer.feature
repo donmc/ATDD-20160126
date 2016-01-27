@@ -4,9 +4,9 @@ Feature: Register Customer
   So that I can gain Miles for Rewards
 
   Scenario: Happy Path
-    When the customer provides a username not already in use
+    When the customer registers with "don"
     Then system should allow the Member to claim the username.
-    When the customer provides an email address not already in use
+    When the customer provides "don@improving.net"
     Then the system should allow the Member to claim that email address.
     When the customer registers as a Member
     Then the system should assign the Member 10000 bonus miles

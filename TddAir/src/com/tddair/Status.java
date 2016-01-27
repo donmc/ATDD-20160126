@@ -1,5 +1,9 @@
 package com.tddair;
 
-public enum Status {
-	RED, GREEN, BLUE, GOLDEN
+public enum Status
+{
+    Red,
+    Green,
+    Blue,
+    Golden
 }
