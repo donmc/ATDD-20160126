@@ -22,5 +22,10 @@ public class TddAirApplication {
 
 	public Member lookupMember(String username) {
 		return members.lookupMember(username);
+	}
+
+	public void completeFlight(String string, String string2) {
+		// TODO Auto-generated method stub
+		
 	} 
 }

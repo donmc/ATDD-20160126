@@ -6,13 +6,12 @@ import org.junit.Assert;
 import com.tddair.Member;
 import com.tddair.TddAirApplication;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
 public class RegisterMemberSteps {
 
-	private TddAirApplication app = new TddAirApplication();
+	private TddAirApplication app = TddAirSingleton.getInstance();
 	private Member member;
 	private String errorMessage;
 	
