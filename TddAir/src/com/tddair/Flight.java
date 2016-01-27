@@ -8,8 +8,27 @@ public class Flight {
 	private String airline;
 	private int number;
 	private int mileage;
+	private String username;
 
 	
+	
+	public Flight(String origin, String destination, int mileage, String airline, int number, String userName) {
+		if(origin == null || origin.length() != 3) {
+			throw new IllegalArgumentException("Invalid origin code");
+		}
+		if(destination == null || destination.length() != 3) {
+			throw new IllegalArgumentException("Invalid destination code");
+		}
+		if(mileage < 100) {
+			throw new IllegalArgumentException("Mileage muse be greater than 100");
+		}
+		this.origin = origin;
+		this.destination = destination;
+		this.mileage = mileage;
+		this.airline = airline;
+		this.number = number;
+		this.username = userName;
+	}
 	
 	public Flight(String origin, String destination, int mileage, String airline, int number) {
 		if(origin == null || origin.length() != 3) {
@@ -26,6 +45,7 @@ public class Flight {
 		this.mileage = mileage;
 		this.airline = airline;
 		this.number = number;
+		this.username = "blank";
 	}
 	
 	public Flight(String origin, String destination, int mileage) {
@@ -52,6 +72,14 @@ public class Flight {
 	public String getFlightInfo() {
 		String flightInfo = this.getFullFlightNumber() + " | " + this.getOrigin() + " -> " + this.getDestination() + " | " + this.getMileage() + " miles";
 		return flightInfo;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
 	}
 
 	
