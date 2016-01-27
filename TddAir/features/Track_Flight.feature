@@ -12,7 +12,7 @@ Feature: Track Flight
     
   Scenario: Red to Green
     Given a customer registers with "bob" and "bob@improving.com"
-    And has 20000 miles
+    And member "bob" has 20000 miles
     When member "bob" takes flight "QF191"
     Then that member has "Green" status
     And that member has 27490 ytd miles

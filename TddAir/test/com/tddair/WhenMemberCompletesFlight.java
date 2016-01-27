@@ -5,13 +5,16 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
+import com.tddair.features.TddAirSingleton;
+
 public class WhenMemberCompletesFlight {
 
-	private TddAirApplication app = new TddAirApplication();
+	private TddAirApplication app;
 	private Member member;
 	
 	@Before
 	public void setup() {
+		app = new TddAirApplication();
 		app.registerCustomer("don", "don@improving.com");
 		app.addFlight("DFW", "DFW", 25000, "TEST", 25000);
 		member = app.lookupMember("don");
@@ -22,5 +25,19 @@ public class WhenMemberCompletesFlight {
 		app.completeFlight("don", "TEST25000");
 		assertEquals(Status.Green, member.getStatus());
 	}
-
+	
+	@Test
+	public void shouldGoFromGreenToBlue() {
+		app.completeFlight("don", "TEST25000");
+		app.completeFlight("don", "TEST25000");
+		assertEquals(Status.Blue, member.getStatus());
+	}
+	
+	@Test
+	public void shouldGoFromBlueToGold() {
+		app.completeFlight("don", "TEST25000");
+		app.completeFlight("don", "TEST25000");
+		app.completeFlight("don", "TEST25000");
+		assertEquals(Status.Gold, member.getStatus());
+	}
 }
