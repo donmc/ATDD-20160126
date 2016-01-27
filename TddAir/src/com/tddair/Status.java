@@ -1,6 +1,6 @@
 package com.tddair;
 
-public enum Category {
+public enum Status {
 	RED,
 	GREEN,
 	BLUE,

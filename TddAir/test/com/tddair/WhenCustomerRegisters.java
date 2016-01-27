@@ -12,7 +12,7 @@ public class WhenCustomerRegisters {
 	private Member member;
 	
 	@Before
-	public void registerCustomer()
+	public void setup()
 	{
 		// setup
 		app = new TddAirApplication();
@@ -40,7 +40,7 @@ public class WhenCustomerRegisters {
 	@Test
 	public void shouldHaveRedStatus() {
 		// verify
-		assertEquals(Category.RED, member.getCategory());
+		assertEquals(Status.RED, member.getStatus());
 	}
 	
 	@Test

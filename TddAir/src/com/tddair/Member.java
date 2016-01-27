@@ -4,7 +4,7 @@ public class Member {
 
 	private String username;
 	private String emailAddress;
-	private Category category;
+	private Status status;
 	private int yearToDateMiles;
 	private int balanceMiles;
 	
@@ -18,12 +18,12 @@ public class Member {
 		return username;
 	}
 
-	public Category getCategory() {
-		return category;
+	public Status getStatus() {
+		return status;
 	}
 	
-	public void setCategory(Category category) {
-		this.category = category;
+	public void setStatus(Status status) {
+		this.status = status;
 	}
 
 	public int getYearToDateMiles() {
