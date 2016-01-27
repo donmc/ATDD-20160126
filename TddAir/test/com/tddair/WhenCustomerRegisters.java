@@ -9,10 +9,10 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 	
 	private Member member;
+	private TddAirApplication app = new TddAirApplication();
 	
 	@Before
 	public void setup() {
-		TddAirApplication app = new TddAirApplication();
 		String username = "don";
 		String email = "don@improving.com";
 		
@@ -30,6 +30,13 @@ public class WhenCustomerRegisters {
 	@Test
 	public void shouldHaveCorrectUsername() {
 		assertEquals("don", member.getUsername());
+	}
+	
+	@Test
+	public void shouldHaveUserRandall() {
+		Member memberRandall = app.lookupMember("Randall");
+		
+		assertEquals("Randall", memberRandall.getUsername());
 	}
 	
 	@Test

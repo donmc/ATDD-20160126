@@ -4,9 +4,9 @@ public class Member {
 	
 	private String username;
 	private String email;
+	private Status status;
 	private int ytdMiles;
 	private int balanceMiles;
-	private Status status;
 	
 	public Member(String username, String email) {
 		this.setUsername(username);

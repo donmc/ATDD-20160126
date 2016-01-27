@@ -4,8 +4,7 @@ package com.tddair;
 public class TddAirApplication {
 	
 	private FlightDao flights = new FlightDao();
-	
-	private Member member;
+	private MemberDao members = new MemberDao();
 	
 	public TddAirApplication() { 
 	}
@@ -15,11 +14,11 @@ public class TddAirApplication {
 	}
 
 	public void registerCustomer(String username, String email) {
-		member = new Member(username, email);
+		members.addMember(username, email);
 	}
 
 	public Member lookupMember(String username) {
-		return member;
+		return members.getMemberByUsername(username);
 	}
 
 }
