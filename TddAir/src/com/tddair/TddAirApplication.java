@@ -14,13 +14,10 @@ public class TddAirApplication {
 	}
 
 	public void registerCustomer(String username, String emailAddress) {
-		Member member = new Member(username, emailAddress);
-		
-		members.addMember(member);
+		members.registerCustomer(username, emailAddress);
 	}
 
 	public Member lookupMember(String username) {
-		Member member = members.getMemberByUsername(username);
-		return member;
+		return members.lookupMember(username);
 	}
 }

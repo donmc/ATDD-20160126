@@ -7,11 +7,11 @@ public class MemberDao {
 
 	private Map<String, Member> members = new HashMap<String, Member>();
 
-	public void addMember(Member member) {
-		members.put(member.getUsername(), member);
+	public void registerCustomer(String username, String emailAddress) {
+		members.put(username, new Member(username, emailAddress));
 	}
 
-	public Member getMemberByUsername(String username) {
+	public Member lookupMember(String username) {
 		
 		return members.get(username);
 	}
