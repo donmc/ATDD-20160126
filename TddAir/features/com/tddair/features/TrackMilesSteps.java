@@ -12,8 +12,8 @@ public class TrackMilesSteps {
 		throw new PendingException();
 	}
 
-	@Given("^has (\\d+) miles$")
-	public void has_miles(int arg1) throws Throwable {
+	@Given("^member \"([^\"]*)\" has (\\d+) miles$")
+	public void has_miles(String username, int miles) throws Throwable {
 		// Write code here that turns the phrase above into concrete actions
 		throw new PendingException();
 	}
