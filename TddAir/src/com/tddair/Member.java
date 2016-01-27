@@ -46,4 +46,8 @@ public class Member {
 	public void addBalanceMiles(int additionalMiles) {
 		balanceMiles = balanceMiles + additionalMiles;
 	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
 }

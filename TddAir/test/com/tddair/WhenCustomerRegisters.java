@@ -9,6 +9,7 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 
 	private TddAirApplication app;
+	private Member member;
 	
 	@Before
 	public void registerCustomer()
@@ -20,41 +21,46 @@ public class WhenCustomerRegisters {
 		
 		// exercise
 		app.registerCustomer(username, emailAddress);
+		
+		member = app.lookupMember("don");
 	}
 	
 	@Test
 	public void shouldBeAddedAsMember() {
 		// verify
-		Member member = app.lookupMember("don");
 		assertNotNull(member);
 	}
 	
 	@Test
 	public void shouldHaveCorrectUsername() {
 		// verify
-		Member member = app.lookupMember("don");
 		assertEquals("don", member.getUsername());
 	}
 	
 	@Test
 	public void shouldHaveRedStatus() {
 		// verify
-		Member member = app.lookupMember("don");
 		assertEquals(Category.RED, member.getCategory());
 	}
 	
 	@Test
 	public void shouldHaveZeroYTDMiles() {
 		// verify
-		Member member = app.lookupMember("don");
 		assertEquals(0, member.getYearToDateMiles());
 	}
 	
 	@Test
 	public void shouldHave10000BalanceMiles() {
 		// verify
-		Member member = app.lookupMember("don");
 		assertEquals(10000, member.getBalanceMiles());
 	}
-
+	
+	@Test
+	public void shouldRegisterMultipleCustomers()
+	{
+		app.registerCustomer("bob", "bob@improving.com");
+		
+		Member bob = app.lookupMember("bob");
+		assertEquals("bob@improving.com", bob.getEmailAddress());
+	}
 }
