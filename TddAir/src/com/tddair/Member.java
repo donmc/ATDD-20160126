@@ -4,7 +4,6 @@ public class Member {
 
 	private String username;
 	private String emailAddress;
-	private Status status;
 	private int yearToDateMiles;
 	private int balanceMiles;
 	
@@ -12,7 +11,6 @@ public class Member {
 	{
 		this.username = username;
 		this.emailAddress = emailAddress;
-		this.status = Status.RED;
 		this.yearToDateMiles = 0;
 		this.balanceMiles = 10000;
 	}
@@ -22,7 +20,7 @@ public class Member {
 	}
 
 	public Status getStatus() {
-		return status;
+		return Status.getStatus(yearToDateMiles);
 	}
 
 	public int getYearToDateMiles() {
@@ -35,5 +33,10 @@ public class Member {
 
 	public String getEmailAddress() {
 		return emailAddress;
+	}
+
+	public void completeFlight(Flight flight) {
+		balanceMiles += flight.getMileage();
+		yearToDateMiles += flight.getMileage();
 	}
 }

@@ -63,4 +63,10 @@ public class WhenCustomerRegisters {
 		Member bob = app.lookupMember("bob");
 		assertEquals("bob@improving.com", bob.getEmailAddress());
 	}
+	
+	@Test(expected=DuplicateUsernameException.class)
+	public void shouldThrowExceptionWithDuplicateUsername()
+	{
+		app.registerCustomer("don", "bob@improving.com");
+	}
 }
