@@ -9,32 +9,31 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 
 	private Member member;
-	
+	private TddAirApplication app;
+
 	@Before
 	public void setup() {
-	// setup
-	TddAirApplication app = new TddAirApplication();
+		// setup
+		app = new TddAirApplication();
 
-	// exercise
-	String username = "srini";
-	String email = "srini@test.com";
-	app.registerCustomer(username, email);
+		// exercise
+		String username = "srini";
+		String email = "srini@test.com";
+		app.registerCustomer(username, email);
 
-	// verify
-	member = app.lookUpMember(username);
+		member = app.lookUpMember(username);
 	}
-	
+
 	@Test
 	public void shouldBeAddedAsMember() {
-		
+
+		// verify
 		assertNotNull(member);
 
 	}
 
 	@Test
 	public void shouldHaveCorrectUsername() {
-
-		
 
 		// verify
 		assertEquals("srini", member.getUsername());
@@ -44,16 +43,27 @@ public class WhenCustomerRegisters {
 	@Test
 	public void shouldHaveRedStatus() {
 
+		// verify
 		assertEquals("Red", member.getStatus());
 	}
 
 	@Test
 	public void shouldHave0YtdMiles() {
-		assertEquals("0", member.getMiles());
+
+		// verify
+		assertEquals("0", member.getYtdMiles());
 	}
 
 	@Test
 	public void shouldHave10000BalanceMiles() {
+
+		assertEquals("10000", member.getBalanceMiles());
+	}
+
+	@Ignore
+	@Test
+	public void shouldRegisterMoreMembers() {
+
 		assertEquals("10000", member.getBalanceMiles());
 	}
 }
