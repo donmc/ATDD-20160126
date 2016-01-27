@@ -17,5 +17,11 @@ When the customer provides a birth date
 Then the system rejects the customers registration
 
 Scenario 3:
-When the customer provides a username that is already reserved
+Given an already reserved username
+When the customer provides a username that is already in use
 Then the system prompts the customer to provide a different username
+
+Scenario 4:
+Given an already reserved email address
+When the customer provides an email address that is already in use
+Then the system prompts the customer to provide a different email address
