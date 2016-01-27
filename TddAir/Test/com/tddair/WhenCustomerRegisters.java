@@ -66,4 +66,8 @@ public class WhenCustomerRegisters {
 
 		assertEquals("10000", member.getBalanceMiles());
 	}
+	
+
 }
+
+
