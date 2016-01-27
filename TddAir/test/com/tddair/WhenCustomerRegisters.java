@@ -9,16 +9,18 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 
 	TddAirApplication app = new TddAirApplication();	
-	String username;;
-	String email;
 	Member member;
 	
 	@Before
 	public void setup()
 	{
-		username = "noel";
-		email = "noel@usaa.com";
+		String username = "noel";
+		String email = "noel@usaa.com";
 		app.registerCustomer(username, email);
+		
+		//add second member
+		app.registerCustomer("don", "don@improving.com");
+		
 		member = app.lookupMember(username);	
 	}
 	
