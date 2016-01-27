@@ -33,13 +33,6 @@ public class WhenCustomerRegisters {
 	}
 	
 	@Test
-	public void shouldHaveUserRandall() {
-		Member memberRandall = app.lookupMember("Randall");
-		
-		assertEquals("Randall", memberRandall.getUsername());
-	}
-	
-	@Test
 	public void shouldHaveCorrectEmail() {
 		assertEquals("don@improving.com", member.getEmail());
 	}
@@ -58,7 +51,20 @@ public class WhenCustomerRegisters {
 	@Test
 	public void shouldHave10000BalanceMiles() {
 		assertEquals(10000, member.getBalanceMiles());
+	}
+	
+	@Test
+	public void shouldRegisterMoreMembers() {
+		String username = "DonJuan";
 		
+		app.registerCustomer(username, "donjuan@internet.net");
+		
+		assertEquals(username, app.lookupMember(username).getUsername());
+	}
+	
+	@Test(expected=DuplicateUsernameException.class)
+	public void shouldThrowExceptionWithDuplicateUsername() {
+		app.registerCustomer("don", "don.mcgreal@improving.com");
 	}
 
 }

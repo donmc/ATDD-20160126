@@ -11,6 +11,8 @@ public class FlightDao {
 		addFlight("DFW", "ORD", 924, "AA", 242);
 		addFlight("LGA", "CDG", 3620, "AF", 38);
 		addFlight("LAX", "SYD", 7490, "QF", 191);
+		addFlight("RED", "GRN", 25000, "RG", 255);
+		addFlight("BLU", "BLU", 50000, "BL", 50);
 	}
 	
 	public Flight getFlightBy(String flightNumber) {

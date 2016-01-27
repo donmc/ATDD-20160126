@@ -9,8 +9,6 @@ public class MemberDao {
 	
 	public MemberDao() {
 		//default constructor, do nothing
-		addMember("Randall","randall.beatty@usaa.com");
-		addMember("Joseph","joseph.mallory@usaa.com");
 	}
 	
 	public Member getMemberByUsername(String username) {
@@ -18,7 +16,8 @@ public class MemberDao {
 	}
 	
 	public void addMember(String username, String email) {
-		Member member = new Member(username, email);
-		members.put(username, member);
+		if(members.containsKey(username))
+			throw new DuplicateUsernameException("Duplicate Username!");
+		members.put(username, new Member(username, email));
 	}
 }

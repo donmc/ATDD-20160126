@@ -16,6 +16,19 @@ public class Member {
 		this.setBalanceMiles(10000);
 	}
 	
+	public void completeFlight(Flight flight) {
+		setYtdMiles(ytdMiles += flight.getMileage());
+		setBalanceMiles(balanceMiles += flight.getMileage());
+		//check if need to update status
+		if( ytdMiles >= 25000 && ytdMiles < 50000) {
+			setStatus(Status.Green);
+		} else if ( ytdMiles >= 50000 && ytdMiles < 75000) {
+			setStatus(Status.Blue);
+		} else if ( ytdMiles >= 75000 ) {
+			setStatus(Status.Golden);
+		}
+	}
+	
 	public String getUsername() {
 		return username;
 	}
