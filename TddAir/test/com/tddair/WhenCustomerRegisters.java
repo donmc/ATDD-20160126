@@ -31,28 +31,30 @@ public class WhenCustomerRegisters {
 	
 	@Test
 	public void shouldHaveCorrectUsername() {
-		//verify
+		// verify
 		Member member = app.lookupMember("don");
 		assertEquals("don", member.getUsername());
 	}
 	
 	@Test
 	public void shouldHaveRedStatus() {
-		//verify
+		// verify
 		Member member = app.lookupMember("don");
-		assertEquals("Red", member.getCategory());
+		assertEquals(Category.RED, member.getCategory());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHaveZeroYTDMiles() {
-		
+		// verify
+		Member member = app.lookupMember("don");
+		assertEquals(0, member.getYearToDateMiles());
 	}
 	
-	@Ignore
 	@Test
 	public void shouldHave10000BalanceMiles() {
-		
+		// verify
+		Member member = app.lookupMember("don");
+		assertEquals(10000, member.getBalanceMiles());
 	}
 
 }

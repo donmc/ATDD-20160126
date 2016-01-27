@@ -4,7 +4,9 @@ public class Member {
 
 	private String username;
 	private String emailAddress;
-	private String category;
+	private Category category;
+	private int yearToDateMiles;
+	private int balanceMiles;
 	
 	public Member(String username, String emailAddress)
 	{
@@ -16,11 +18,32 @@ public class Member {
 		return username;
 	}
 
-	public String getCategory() {
+	public Category getCategory() {
 		return category;
 	}
 	
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		this.category = category;
+	}
+
+	public int getYearToDateMiles() {
+		return yearToDateMiles;
+	}
+	
+	public void setYearToDateMiles(int yearToDateMiles) {
+		this.yearToDateMiles = yearToDateMiles;
+	}
+
+	public int getBalanceMiles() {
+		return balanceMiles;
+	}
+	
+	/**
+	 * Add miles to the member's miles balance.
+	 * 
+	 * @param additionalMiles
+	 */
+	public void addBalanceMiles(int additionalMiles) {
+		balanceMiles = balanceMiles + additionalMiles;
 	}
 }
