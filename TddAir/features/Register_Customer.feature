@@ -10,13 +10,6 @@ Feature: Register Customer
     And that member has 0 ytd miles
     And that member has 10000 balance miles
 
-  #Scenario: Happy Path
-  #  When a customer registers with "sue" and "don@improving.com"
-  #  Then that customer is added as a member
-  #  And that member has "Green" status
-  #  And that member has 0 ytd miles
-  #  And that member has 20000 balance miles
-
   Scenario: Duplicate Username
     Given a customer registers with "don" and "don@improving.com"
     When a customer registers with "don" and "don.mcgreal@improving.com"

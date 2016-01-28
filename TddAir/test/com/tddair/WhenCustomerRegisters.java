@@ -13,7 +13,7 @@ public class WhenCustomerRegisters {
 
 	@Before
 	public void setup() {
-		app = new TddAirApplication();
+		app = new TddAirApplication(new FakeFlightDao());
 		String username = "don";
 		String email = "don@improving.com";
 		

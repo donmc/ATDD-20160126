@@ -6,10 +6,11 @@ import java.util.Map;
 
 public class TddAirApplication {
 	
-	private FlightDao flights = new FlightDao();
+	private FlightDao flights;
 	private MemberDao members = new MemberDao();
 	
-	public TddAirApplication() {
+	public TddAirApplication(FlightDao dao) {
+		this.flights = dao;
 	} 
 	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
@@ -24,8 +25,12 @@ public class TddAirApplication {
 		return members.lookupMember(username);
 	}
 
-	public void completeFlight(String string, String string2) {
-		// TODO Auto-generated method stub
-		
+	public void completeFlight(String username, String flightNumber) {
+		Flight flight = flights.getFlightBy(flightNumber);
+		Member member = members.lookupMember(username);
+		member.completeFlight(flight);
 	} 
 }
+
+
+

@@ -3,6 +3,7 @@ package com.tddair;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import com.tddair.features.TddAirSingleton;
@@ -14,7 +15,7 @@ public class WhenMemberCompletesFlight {
 	
 	@Before
 	public void setup() {
-		app = new TddAirApplication();
+		app = new TddAirApplication(new FakeFlightDao());
 		app.registerCustomer("don", "don@improving.com");
 		app.addFlight("DFW", "DFW", 25000, "TEST", 25000);
 		member = app.lookupMember("don");
@@ -27,12 +28,18 @@ public class WhenMemberCompletesFlight {
 	}
 	
 	@Test
+	public void shouldAccumulateMiles() {
+		app.completeFlight("don", "TEST25000");
+		assertEquals(25000, member.getYtdMiles());
+	}
+	
+	@Test
 	public void shouldGoFromGreenToBlue() {
 		app.completeFlight("don", "TEST25000");
 		app.completeFlight("don", "TEST25000");
 		assertEquals(Status.Blue, member.getStatus());
 	}
-	
+
 	@Test
 	public void shouldGoFromBlueToGold() {
 		app.completeFlight("don", "TEST25000");
