@@ -2,6 +2,8 @@ package com.tddair;
 
 public class CasSpy implements ICreditAuthorizationSystem {
 
+	public static String VALID_CC = "1234123412341234";
+	public static String INVALID_CC = "1234";
 	private int amount;
 	
 	@Override
@@ -11,10 +13,10 @@ public class CasSpy implements ICreditAuthorizationSystem {
 		
 		if (amount >= 250) {
 			throw new InsufficientFundsException("Insufficient funds!");
-		} else if (cardNumber != null && cardNumber.length() == 16) {
-			validationStatus = true;
-		} else {
+		} else if (INVALID_CC.equals(cardNumber)) {
 			throw new InvalidCardException("Invalid card number!");
+		} else if (VALID_CC.equals(cardNumber)){
+			validationStatus = true;
 		}
 		
 		return validationStatus;

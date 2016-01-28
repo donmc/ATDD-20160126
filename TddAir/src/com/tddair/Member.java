@@ -46,13 +46,12 @@ public class Member {
 	}
 
 	public void purchaseUpgradeWithMiles(int numberOfUpgrades) {
-		if (balanceMiles >= status.getUpgradeMiles() * numberOfUpgrades)
-		{
-			balanceMiles -= status.getUpgradeMiles() * numberOfUpgrades;
+		int cost = status.getUpgradeMiles() * numberOfUpgrades;
+		
+		if (balanceMiles >= cost) {
+			balanceMiles -= cost;
 			upgrades += numberOfUpgrades;
-		}
-		else
-		{
+		} else {
 			throw new InsufficientMilesException("Insufficient miles!");
 		}
 	}
@@ -62,8 +61,9 @@ public class Member {
 	}
 
 	public void purchaseUpgradeWithCard(ICreditAuthorizationSystem cas, String cardNumber, int numberOfUpgrades) {
-		if (cas.validate(status.getUpgradeCost() * numberOfUpgrades, cardNumber))
-		{
+		int cost = status.getUpgradeCost() * numberOfUpgrades;
+		
+		if (cas.validate(cost, cardNumber)) {
 			upgrades += numberOfUpgrades;
 		}
 	}

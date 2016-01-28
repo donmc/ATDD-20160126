@@ -1,5 +1,7 @@
 package com.tddair;
 
+import static com.tddair.CasSpy.INVALID_CC;
+import static com.tddair.CasSpy.VALID_CC;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -81,7 +83,7 @@ public class WhenPurchasingSeatUpgrades {
 	
 	@Test
 	public void shouldPurchaseUpgradeWithCard_RED() {
-		redGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 1);
+		redGuy.purchaseUpgradeWithCard(cas, VALID_CC, 1);
 		
 		assertEquals(1, redGuy.getUpgrades());
 		assertEquals(100, cas.getAmount());
@@ -89,7 +91,7 @@ public class WhenPurchasingSeatUpgrades {
 	
 	@Test
 	public void shouldPurchaseUpgradeWithCard_GREEN() {
-		greenGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 1);
+		greenGuy.purchaseUpgradeWithCard(cas, VALID_CC, 1);
 		
 		assertEquals(1, greenGuy.getUpgrades());
 		assertEquals(90, cas.getAmount());
@@ -97,7 +99,7 @@ public class WhenPurchasingSeatUpgrades {
 	
 	@Test
 	public void shouldPurchaseUpgradeWithCard_BLUE() {
-		blueGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 1);
+		blueGuy.purchaseUpgradeWithCard(cas, VALID_CC, 1);
 		
 		assertEquals(1, blueGuy.getUpgrades());
 		assertEquals(75, cas.getAmount());
@@ -105,7 +107,7 @@ public class WhenPurchasingSeatUpgrades {
 	
 	@Test
 	public void shouldPurchaseUpgradeWithCard_GOLDEN() {
-		goldenGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 1);
+		goldenGuy.purchaseUpgradeWithCard(cas, VALID_CC, 1);
 		
 		assertEquals(1, goldenGuy.getUpgrades());
 		assertEquals(60, cas.getAmount());
@@ -113,7 +115,7 @@ public class WhenPurchasingSeatUpgrades {
 	
 	@Test
 	public void shouldPurchaseMultipleUpgradesWithCard_RED() {
-		redGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 2);
+		redGuy.purchaseUpgradeWithCard(cas, VALID_CC, 2);
 		
 		assertEquals(2, redGuy.getUpgrades());
 		assertEquals(200, cas.getAmount());
@@ -121,7 +123,7 @@ public class WhenPurchasingSeatUpgrades {
 	
 	@Test
 	public void shouldPurchaseMultipleUpgradesWithCard_GOLDEN() {
-		goldenGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 2);
+		goldenGuy.purchaseUpgradeWithCard(cas, VALID_CC, 2);
 		
 		assertEquals(2, goldenGuy.getUpgrades());
 		assertEquals(120, cas.getAmount());
@@ -130,7 +132,7 @@ public class WhenPurchasingSeatUpgrades {
 	@Test
 	public void shouldThrowExceptionForInvalidCard() {
 		try {
-			redGuy.purchaseUpgradeWithCard(cas, "1234", 1);
+			redGuy.purchaseUpgradeWithCard(cas, INVALID_CC, 1);
 			fail("InvalidCardException expected");
 		} catch (InvalidCardException e) {
 			assertEquals("Invalid card number!", e.getMessage());
@@ -140,7 +142,7 @@ public class WhenPurchasingSeatUpgrades {
 	@Test
 	public void shouldFailBigUpgradePurchase() {
 		try {
-			redGuy.purchaseUpgradeWithCard(cas, "1234123412341234", 3);
+			redGuy.purchaseUpgradeWithCard(cas, VALID_CC, 3);
 			fail("InsufficientFundsException expected");
 		} catch (InsufficientFundsException e) {
 			assertEquals("Insufficient funds!", e.getMessage());
