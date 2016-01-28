@@ -7,6 +7,8 @@ public class Member {
 	private Status status;
 	private int ytdMiles;
 	private int balanceMiles;
+	private int seatUpgrades;
+	private CAS cas;
 	
 	public Member(String username, String email) {
 		this.setUsername(username);
@@ -14,6 +16,7 @@ public class Member {
 		this.setStatus(Status.Red);
 		this.setYtdMiles(0);
 		this.setBalanceMiles(10000);
+		this.setSeatUpgrades(0);
 	}
 	
 	public void completeFlight(Flight flight) {
@@ -61,6 +64,33 @@ public class Member {
 
 	public void setBalanceMiles(int balanceMiles) {
 		this.balanceMiles = balanceMiles;
+	}
+
+	public void purchaseSeatUpgradeWithMiles(int quantity) {
+		int cost = status.getUpgradeCostMiles() * quantity;
+		
+		if(cost <= getBalanceMiles()){
+			balanceMiles -= cost;
+			seatUpgrades += quantity;
+		}
+	}
+
+	public int getSeatUpgrades() {
+		return seatUpgrades;
+	}
+	
+	private void setSeatUpgrades(int seatUpgrades) {
+		this.seatUpgrades = seatUpgrades;
+	}
+
+	public void setCas(CAS cas) {
+		this.cas = cas;
+	}
+
+	public void purchaseSeatUpgradeWithCreditCard(int quantity, String ccNum) {
+		int amount = quantity * status.getSeatUpgradeCostDollars();
+		cas.validate(amount, ccNum);
+		seatUpgrades += quantity;
 	}
 	
 }

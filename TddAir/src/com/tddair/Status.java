@@ -1,11 +1,19 @@
 package com.tddair;
 
 public enum Status {
-	Red,
-	Green,
-	Blue,
-	Golden;
+	Red(10000,100),
+	Green(9000,90),
+	Blue(8000,75),
+	Golden(7000,60);
 
+	private int upgradeCostDollars;
+	private int upgradeCostMiles;
+	
+	private Status(int upgradeCostMiles, int upgradeCostDollars) {
+		this.upgradeCostMiles = upgradeCostMiles;
+		this.upgradeCostDollars = upgradeCostDollars;
+	}
+	
 	public static Status getStatusFor(int ytdMiles) {
 		Status status = Red;
 		
@@ -18,5 +26,13 @@ public enum Status {
 		}
 		
 		return status;
+	}
+
+	public int getUpgradeCostMiles() {
+		return upgradeCostMiles;
+	}
+
+	public int getSeatUpgradeCostDollars() {
+		return upgradeCostDollars;
 	}
 }
