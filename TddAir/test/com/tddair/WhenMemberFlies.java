@@ -12,7 +12,7 @@ public class WhenMemberFlies {
 
 	@Before
 	public void setup() {
-		app = new TddAirApplication();
+		app = new TddAirApplication(new FakeFlightDAO());
 		app.registerCustomer("don", "don@improving.com");
 		app.addFlight("DFW", "DFW", 20000, "TEST", 20000);
 		app.addFlight("DFW", "DFW", 45000, "TEST", 45000);

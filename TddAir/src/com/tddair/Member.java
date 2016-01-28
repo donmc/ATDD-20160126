@@ -7,6 +7,7 @@ public class Member {
 	private Status status;
 	private int yearToDateMiles;
 	private int balanceMiles;
+	private int upgrades;
 	
 	public Member(String username, String emailAddress)
 	{
@@ -15,6 +16,7 @@ public class Member {
 		this.yearToDateMiles = 0;
 		this.balanceMiles = 10000;
 		this.status = Status.RED;
+		this.upgrades = 0;
 	}
 	
 	public String getUsername() {
@@ -41,5 +43,28 @@ public class Member {
 		balanceMiles += flight.getMileage();
 		yearToDateMiles += flight.getMileage();
 		status = Status.getStatusForMiles(yearToDateMiles);
+	}
+
+	public void purchaseUpgradeWithMiles(int numberOfUpgrades) {
+		if (balanceMiles >= status.getUpgradeMiles() * numberOfUpgrades)
+		{
+			balanceMiles -= status.getUpgradeMiles() * numberOfUpgrades;
+			upgrades += numberOfUpgrades;
+		}
+		else
+		{
+			throw new InsufficientMilesException();
+		}
+	}
+
+	public int getUpgrades() {
+		return upgrades;
+	}
+
+	public void purchaseUpgradeWithCard(ICreditAuthorizationSystem cas, String cardNumber, int numberOfUpgrades) {
+		if (cas.validate(status.getUpgradeCost() * numberOfUpgrades, cardNumber))
+		{
+			upgrades += numberOfUpgrades;
+		}
 	}
 }

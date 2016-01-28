@@ -15,7 +15,7 @@ public class WhenCustomerRegisters {
 	public void setup()
 	{
 		// setup
-		app = new TddAirApplication();
+		app = new TddAirApplication(new FakeFlightDAO());
 		String username = "don";
 		String emailAddress = "don@improving.com";
 		
