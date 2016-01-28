@@ -9,7 +9,7 @@ import org.junit.Test;
 public class WhenCustomerRegisters {
 	
 	private Member member;
-	private TddAirApplication app = new TddAirApplication();
+	private TddAirApplication app = new TddAirApplication(new FakeFlightDao());
 	
 	@Before
 	public void setup() {

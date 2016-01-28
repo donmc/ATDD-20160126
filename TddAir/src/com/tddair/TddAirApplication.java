@@ -3,10 +3,11 @@ package com.tddair;
 
 public class TddAirApplication {
 	
-	private FlightDao flights = new FlightDao();
+	private FlightDao flights;
 	private MemberDao members = new MemberDao();
 	
-	public TddAirApplication() { 
+	public TddAirApplication(FlightDao dao) {
+		this.flights = dao;
 	}
 	
 	public void addFlight(String origin, String destination, int mileage, String airline, int number) {
