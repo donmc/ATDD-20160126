@@ -8,4 +8,9 @@ public class TddAirSingleton {
 	public static TddAirApplication getInstance() {
 		return instance;
 	}
+
+	public static TddAirApplication newInstance() {
+		instance = new TddAirApplication();
+		return instance;
+	}
 }

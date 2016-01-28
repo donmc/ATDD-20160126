@@ -6,6 +6,7 @@ import static org.junit.Assert.assertNotNull;
 import com.tddair.Member;
 import com.tddair.TddAirApplication;
 
+import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
@@ -14,6 +15,11 @@ public class RegisterMemberSteps {
 	private TddAirApplication app = TddAirSingleton.getInstance();
 	private Member member;
 	private String errorMessage;
+	
+	@Given("^a fresh service$")
+	public void a_fresh_service() throws Throwable {
+	    app = TddAirSingleton.newInstance();
+	}
 	
 	@When("^a customer registers with \"([^\"]*)\" and \"([^\"]*)\"$")
 	public void a_customer_registers_with_and(String username, String emailAddress) throws Throwable {

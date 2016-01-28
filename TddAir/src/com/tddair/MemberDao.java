@@ -19,10 +19,4 @@ public class MemberDao {
 		
 		return members.get(username);
 	}
-
-	public void completeFlight(String username, Flight flight) {
-		Member member = lookupMember(username);
-		member.completeFlight(flight);
-	}
-	
 }

@@ -1,22 +1,27 @@
 package com.tddair;
 
 public enum Status {
-	RED,
-	GREEN,
-	BLUE,
-	GOLDEN;
+	RED(0),
+	GREEN(25000),
+	BLUE(50000),
+	GOLDEN(75000);
 
-	public static Status getStatus(int yearToDateMiles) {
-		Status status;
+	private int threshold;
+	
+	private Status (int threshold)
+	{
+		this.threshold = threshold;
+	}
+	
+	public static Status getStatusForMiles(int yearToDateMiles) {
+		Status status = RED;
 		
-		if (yearToDateMiles <= 25000) {
-			status = RED;
-		} else if (yearToDateMiles <= 50000) {
-			status = GREEN;
-		} else if (yearToDateMiles <= 75000) {
-			status = BLUE;
-		} else {
+		if (yearToDateMiles > GOLDEN.threshold) {
 			status = GOLDEN;
+		} else if (yearToDateMiles > BLUE.threshold) {
+			status = BLUE;
+		} else if (yearToDateMiles > GREEN.threshold) {
+			status = GREEN;
 		}
 		
 		return status;
