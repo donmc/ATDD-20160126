@@ -20,4 +20,29 @@ public class WhenFlightInfoInvalid {
 			assertEquals("Invalid origin code", e.getMessage());
 		}
 	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	public void shouldNotAllowNullDestination() {
+		new Flight("DFW", null, 200);
+	}
+	
+	@Test
+	public void shouldNotAllowInvalidDestination() {
+		try {
+			new Flight("DFW", "SANANTONIO", 200);
+			fail("Should throw IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Invalid destination code", e.getMessage());
+		}
+	}
+	
+	@Test
+	public void shouldNotAllowShortFlight() {
+		try {
+			new Flight("SAT", "AUS", 90);
+			fail("Should throw IllegalArgumentException");
+		} catch (IllegalArgumentException e) {
+			assertEquals("Mileage muse be greater than 100", e.getMessage());
+		}
+	}
 }

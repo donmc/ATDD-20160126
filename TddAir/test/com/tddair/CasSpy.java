@@ -1,6 +1,6 @@
 package com.tddair;
 
-public class CASSpy implements ICreditAuthorizationSystem {
+public class CasSpy implements ICreditAuthorizationSystem {
 
 	private int amount;
 	
@@ -9,13 +9,12 @@ public class CASSpy implements ICreditAuthorizationSystem {
 		boolean validationStatus = false;
 		this.amount = amount;
 		
-		if (cardNumber != null && cardNumber.length() == 16)
-		{
+		if (amount >= 250) {
+			throw new InsufficientFundsException("Insufficient funds!");
+		} else if (cardNumber != null && cardNumber.length() == 16) {
 			validationStatus = true;
-		}
-		else
-		{
-			throw new InvalidCardException();
+		} else {
+			throw new InvalidCardException("Invalid card number!");
 		}
 		
 		return validationStatus;

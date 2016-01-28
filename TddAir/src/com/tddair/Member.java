@@ -53,7 +53,7 @@ public class Member {
 		}
 		else
 		{
-			throw new InsufficientMilesException();
+			throw new InsufficientMilesException("Insufficient miles!");
 		}
 	}
 
